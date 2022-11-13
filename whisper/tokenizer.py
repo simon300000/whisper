@@ -256,7 +256,7 @@ class Tokenizer:
         assert all(0x2640 <= ord(c) <= 0x267F for c in miscellaneous)
 
         # allow hyphens "-" and single quotes "'" between words, but not at the beginning of a word
-        result = {self.tokenizer.encode(" -")[0], self.tokenizer.encode(" '")[0]}
+        result = {self.tokenizer.encode(" -")[0], self.tokenizer.encode("- ")[0], self.tokenizer.encode(" '")[0]}
         for symbol in symbols + list(miscellaneous):
             for tokens in [self.tokenizer.encode(symbol), self.tokenizer.encode(" " + symbol)]:
                 if len(tokens) == 1 or symbol in miscellaneous:
